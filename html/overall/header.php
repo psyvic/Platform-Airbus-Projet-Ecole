@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <base href="<?php APP_URL ?>">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Mobirise v2.8.3, mobirise.com">
@@ -15,5 +16,6 @@
   <link rel="stylesheet" href="views/mobirise/css/mbr-additional.css" type="text/css">
   <link rel="stylesheet" href="views/fontawesome/css/font.css" type="text/css">
 
+  <script src="views/app/js/common.js"></script>
   <title><?php echo APP_TITLE; ?></title>
 </head>
