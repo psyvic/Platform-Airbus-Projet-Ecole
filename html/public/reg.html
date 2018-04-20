@@ -7,29 +7,40 @@
          <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> Login</h4>
        </div>
        <div class="modal-body">
-         <form role="form">
+         <div role="form" onkeypress="return runScriptReg(event)">
            <div class="form-group">
-             <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-             <input type="text" class="form-control" id="user_reg" placeholder="Type your Email">
+             <label for="usrname"><span class="glyphicon glyphicon-user"></span> Email</label>
+             <input type="text" class="form-control" id="login_reg" placeholder="Type your Airbus Email">
            </div>
-<!--            
            <div class="form-group">
-             <label for="usrname"><span class="glyphicon glyphicon-envelope"></span> Email</label>
-             <input type="email" class="form-control" id="email_reg" placeholder="Introduce tu correo electrónico">
-           </div> -->
+             <label for="usrname"><span class="glyphicon glyphicon-user"></span> Last Name</label>
+             <input type="text" class="form-control" id="lastName_reg" placeholder="Type your Last Name">
+           </div>
+           <div class="form-group">
+             <label for="usrname"><span class="glyphicon glyphicon-user"></span> First Name</label>
+             <input type="text" class="form-control" id="firstName_reg" placeholder="Type your First Name">
+           </div>
+           <div class="form-group">
+             <label for="usrname"><span class="glyphicon glyphicon-user"></span> Job Number</label>
+             <input type="text" class="form-control" id="jobNumber_reg" placeholder="Type your Job Number">
+           </div>
+           <div class="form-group">
+             <label for="usrname"><span class="glyphicon glyphicon-user"></span> Site</label>
+             <input type="text" class="form-control" id="site_reg">
+           </div>
            <div class="form-group">
              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-             <input type="text" class="form-control" id="pass_reg" placeholder="Introduce tu contraseña">
+             <input type="text" class="form-control" id="pass_reg" placeholder="Type your Password">
            </div>
            <div class="form-group">
              <label for="psw_two"><span class="glyphicon glyphicon-eye-open"></span> Repeat your Password</label>
-             <input type="text" class="form-control" id="pass_reg_dos" placeholder="Type your Password">
+             <input type="text" class="form-control" id="passVer_reg" placeholder="Type your Password again">
            </div>
            <div class="checkbox">
-             <label><input type="checkbox" id="tyc_reg" value="1" checked>Accept T&C</label>
+             <label><input  type="checkbox" id="terms_reg" value="1" checked>Accept Terms & Conditions</label>
            </div>
-           <button type="button" id="registrarme" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Register</button>
-         </form>
+           <button type="button" onclick-"goReg()" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Register</button>
+         </div>
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>

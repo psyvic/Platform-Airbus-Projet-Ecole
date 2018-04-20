@@ -1,9 +1,11 @@
 <?php
 
+
+session_start();
 //Connection Constants
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'root');
 define('DB_NAME', 'RTP-TWEB');
 
 //App Constants
@@ -16,4 +18,7 @@ define('APP_URL', 'http://localhost:8888/RTP-TWEB/');
 require('vendor/autoload.php');
 require('core/models/class.Connection.php');
 require('core/bin/functions/Encrypt.php');
+require('core/bin/functions/Users.php');
+
+$users = Users();
 ?>

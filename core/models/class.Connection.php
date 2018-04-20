@@ -4,8 +4,10 @@ class Connection extends mysqli {
 	
 	public function __construct() {
 		parent::__construct(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-		$this->connect_errno ? die('error conexion DB') : null;
-		$this->setcharset("utf8");
+		if ($this->connect_errno) {
+			die($this->connect_error);
+		}
+		// $this->setcharset("utf8");
 	}
 
 	public function rows($query) {
