@@ -9,8 +9,7 @@
     <div class="mbr-section__container container mbr-section__container--isolated">
         <div class="row" style="min-height: 270px;">
             <div class="alert alert-dismissible alert-info">
-            <strong>Alert: </strong>You must be <a data-toggle="modal" data-target="#Login">logged in</a> to acces this content.
-            
+              <strong>Alert: </strong>You must be <a data-toggle="modal" data-target="#Login">logged in</a> to acces this content.
           </div>
         </div>
     </div>

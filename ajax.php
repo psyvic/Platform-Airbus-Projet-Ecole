@@ -10,6 +10,9 @@
 			case 'reg' :
 				require('core/bin/ajax/goReg.php');
 				break;
+			case 'lostPass' :
+				require('core/bin/ajax/goLostPass.php');
+				break;
 			default :
 				header('location: index.php');
 				break;
