@@ -15,7 +15,7 @@
                           <?php
                           if (!isset($_SESSION['app_id'])) { 
                             echo '<a class="mbr-buttons__link btn text-white" data-toggle="modal" data-target="#Login">LOGIN</a></li><li class="mbr-navbar__item">
-                        <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-danger" data-toggle="modal" data-target="#Registro">REGISTER</a></li></ul></div>';
+                        <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-danger" data-toggle="modal" data-target="#registration">REGISTER</a></li></ul></div>';
                           } else {
                             echo '<a class="mbr-buttons__link btn text-white" href="?view=profile&id=' . $_SESSION[app_id] .'">' . strtoupper($users[$_SESSION['app_id']]['firstName']) . '</a></li><li class="mbr-navbar__item">
                                 <a class="mbr-buttons__link btn text-white" href="?view=account">ACCOUNT</a></li><li class="mbr-navbar__item">';

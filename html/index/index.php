@@ -5,6 +5,30 @@
 <?php include(HTML_DIR . 'overall/topnav.php'); ?>
 
 
+<?php
+if(isset($_GET['success'])) {
+    echo '<section class="mbr-section mbr-after-navbar" id="content1-10">
+            <div class="mbr-section__container container mbr-section__container--isolated">
+              <div class="alert alert-dismissible alert-success">
+                <strong>Account activated</strong>Your user has been successfully activated.
+              </div>
+            </div>
+          </section>';
+} 
+?>
+
+<?php
+if(isset($_GET['error'])) {
+    echo '<section class="mbr-section mbr-after-navbar" id="content1-10">
+            <div class="mbr-section__container container mbr-section__container--isolated">
+              <div class="alert alert-dismissible alert-danger">
+                <strong>ERROR: </strong>There was a problem with activating your account.
+              </div>
+            </div>
+          </section>';
+} 
+?>
+
 <section class="mbr-section mbr-after-navbar" id="content1-10">
     <div class="mbr-section__container container mbr-section__container--isolated">
         <div class="row">

@@ -1,15 +1,3 @@
-<section class="mbr-section mbr-after-navbar" id="content1-10">
-    <div class="mbr-section__container container mbr-section__container--isolated">
-        <div class="row">
-            <div class="mbr-article mbr-article--wysiwyg col-sm-8 col-sm-offset-2">
-            <p>
-              Filling text
-            </p>
-          </div>
-        </div>
-    </div>
-</section>
-
 <section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="social-buttons2-13" style="background-color: rgb(240, 240, 240);">
     <div class="mbr-section__container container">
         <div class="mbr-header mbr-header--inline row">
