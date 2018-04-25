@@ -33,9 +33,11 @@ if(isset($_GET['error'])) {
     <div class="mbr-section__container container mbr-section__container--isolated">
         <div class="row">
             <div class="mbr-article mbr-article--wysiwyg col-sm-8 col-sm-offset-2">
-            <p>
+            <div id="calendar"></div>
+
+            <!-- <p>
               Filling text
-            </p>
+            </p> -->
           </div>
         </div>
     </div>
@@ -44,7 +46,7 @@ if(isset($_GET['error'])) {
 <section class="mbr-section mbr-after-navbar" id="content1-10">
     <div class="mbr-section__container container mbr-section__container--isolated">
         <div class="row">
-            <div class="mbr-article mbr-article--wysiwyg col-sm-8 col-sm-offset-2">
+            <div class="mbr-article mbr-article--wysiwyg col -sm-8 col-sm-offset-2">
             <p>
               Filling text
             </p>
@@ -57,3 +59,18 @@ if(isset($_GET['error'])) {
 
 </body>
 </html>
+<!-- <script type="text/javascript">
+$('#calendar').fullCalendar({
+  header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay'
+  },
+    // events: _this.state.events,
+    defaultView:'month',
+    displayEventTime: false,
+    editable: false,
+    droppable: false,
+    durationEditable: false
+  });
+</script> -->

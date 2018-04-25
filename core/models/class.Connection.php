@@ -22,4 +22,9 @@ class Connection extends mysqli {
 		return mysqli_fetch_array($query);
 	}
 
+	// This is to avoid using $db->close() everytime we make a new Connection
+	// public function __destroy() {
+	// 	$this->close();
+	// }
+
 }

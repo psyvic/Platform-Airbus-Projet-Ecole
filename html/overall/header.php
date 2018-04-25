@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="views/mobirise/css/mbr-additional.css" type="text/css">
   <link rel="stylesheet" href="views/fontawesome/css/font.css" type="text/css">
 
+<!-- FullCalendar -->
   <script src="views/app/js/common.js"></script>
   <title><?php echo APP_TITLE; ?></title>
 </head>

@@ -31,7 +31,15 @@
 </footer>
 
 <script src="views/web/assets/jquery/jquery.min.js"></script>
+<script src='vendor/moment/moment/moment.js'></script>
 <script src="views/bootstrap/js/bootstrap.min.js"></script>
+<!-- FullCalendar -->
+<!-- <script src='vendor/fullcalendar/dist/fullcalendar.js'></script> -->
+<link rel="stylesheet" href="vendor/fullcalendar/dist/fullcalendar.min.css">
+<!-- <script src='vendor/fullcalendar/dist/scheduler.min.js'></script> -->
+<script src="views/app/js/calendar.js"></script>
+<!-- FullCalendar -->
 <script src="views/smooth-scroll/SmoothScroll.js"></script>
 <script src="views/jarallax/jarallax.js"></script>
 <script src="views/mobirise/js/script.js"></script>
+<script src='fullcalendar.min.js'></script>

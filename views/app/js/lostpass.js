@@ -3,7 +3,6 @@ function goLostPass() {
 	login = __('login_lostpass').value;
 	pass = __('pass_lostpass').value;
 	form = 'login=' + login + '&pass=' + pass;
-	console.log(form);
 	connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 	connect.onreadystatechange = function() {
 		if (login != '' && pass != '') {
