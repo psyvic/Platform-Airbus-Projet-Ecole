@@ -4,6 +4,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 // -----------------for PHPMailer END-----------------------
 
+if(!empty($_POST['add'])) {
+	echo 'add funciona';
+} 
 $db = new Connection();
 
 $login = $db->real_escape_string($_POST['login']);

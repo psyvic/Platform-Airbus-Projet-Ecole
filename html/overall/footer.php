@@ -43,3 +43,4 @@
 <script src="views/jarallax/jarallax.js"></script>
 <script src="views/mobirise/js/script.js"></script>
 <script src='fullcalendar.min.js'></script>
+<!-- <script src="views/app/js/events.js"></script> -->

@@ -32,6 +32,7 @@
 </section>
 
 <?php
+include(HTML_DIR . 'public/deployment.html'); 
 if (!isset($_SESSION['app_id'])) { 
     include(HTML_DIR . 'public/login.html');
     include(HTML_DIR . 'public/reg.html');

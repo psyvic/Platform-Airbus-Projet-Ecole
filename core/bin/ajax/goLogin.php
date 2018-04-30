@@ -5,7 +5,6 @@ if (!empty($_POST['user']) and !empty($_POST['pass'])) {
 	$data= $db->real_escape_string($_POST['user']);
 	$pass = Encrypt($_POST['pass']);
 	$sql = $db->query("SELECT id FROM users WHERE (login='$data' OR jobNumber='$data') AND pass ='$pass' LIMIT 1;");
-	// $sql = $db->query("SELECT * FROM users");
 	if ($db->rows($sql) > 0) {
 		if ($_POST['session']) { ini_set('session.cookie_lifetime', time() + (60 * 60 * 24)); }
 		$_SESSION['app_id'] = $db->browse($sql)[0];
