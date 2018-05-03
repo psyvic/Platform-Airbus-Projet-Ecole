@@ -38,6 +38,7 @@
 <link rel="stylesheet" href="vendor/fullcalendar/dist/fullcalendar.min.css">
 <!-- <script src='vendor/fullcalendar/dist/scheduler.min.js'></script> -->
 <script src="views/app/js/calendar.js"></script>
+<script src="views/app/js/admin.js"></script>
 <!-- FullCalendar -->
 <script src="views/smooth-scroll/SmoothScroll.js"></script>
 <script src="views/jarallax/jarallax.js"></script>

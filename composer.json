@@ -4,6 +4,7 @@
         "phpmailer/phpmailer": "^6.0",
         "fullcalendar/fullcalendar": "^3.9",
         "components/jquery": "^3.3",
-        "moment/moment": "^2.22"
+        "moment/moment": "^2.22",
+        "thomaspark/bootswatch": "^4.1"
     }
 }

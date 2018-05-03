@@ -7,17 +7,9 @@ $(document).ready(function() {
 		theme: true,
 		themeSystem: 'bootstrap3',
 		header: {
-	    left: 'prev,next,today,mybutton',
+	    left: 'prev,next,today',
 	    center: 'title',
 	    right: 'month,agendaWeek,agendaDay'
-		},
-		customButtons: {
-			mybutton: {
-				text: 'mega button',
-				click: function(){
-					alert("my ultra button");
-				}
-			}
 		},
 		dayClick: function(date, jsEvent, view){
 			cleanEvent();
@@ -33,13 +25,19 @@ $(document).ready(function() {
 			cleanEvent();
 			console.log(calEvent.start);
 			console.log(calEvent.end);
+			var dateEnd = calEvent.end.format().split("T");
 	 		$("#start").val(calEvent.start.format());
 	 		if (!(calEvent.end)) {
-				$("#end").val(calEvent.start.format());
+				$("#end").val(dateEnd[0]);
 			} else {
-				$("#end").val(calEvent.end.format());
+				$("#end").val(dateEnd[0]);
 			}
-			$('#icao').val(calEvent.title);
+			$('#icao').val(calEvent.icao);
+			$('#airline').val(calEvent.airline);
+			$('#event_user_login').val(calEvent.user_login);			
+			$('#type_deploy').val(calEvent.type_deploy);			
+			$('#train_days').val(calEvent.train_days);
+			$('#deploy_days').val(calEvent.act_days);
 			$('#shift_id').val(calEvent.shift_id);
 			$("#eraseEventBtn").css("display","");
 	 		$("#updateEventBtn").css("display","");
@@ -50,18 +48,27 @@ $(document).ready(function() {
 		displayEventTime: false,
 		editable: true,
 		eventDrop: function (calEvent) {
+			console.log(calEvent.end);
 	 		$("#start").val(calEvent.start.format());
 	 		if (!(calEvent.end)) {
 				$("#end").val(calEvent.start.format());
 			} else {
 				$("#end").val(calEvent.end.format());
 			}
-			$('#icao').val(calEvent.title);
+			$('#icao').val(calEvent.icao);
 			$('#shift_id').val(calEvent.shift_id);
-			updateEvent();
+			$('#airline').val(calEvent.airline);
+			$('#event_user_login').val(calEvent.user_login);			
+			$('#type_deploy').val(calEvent.type_deploy);			
+			$('#train_days').val(calEvent.train_days);
+			$('#deploy_days').val(calEvent.act_days);
+			updateEvent(calEvent);
 		},
 		droppable: false,
-		durationEditable: false
+		durationEditable: true,
+		eventStartEditable: true,
+		allDay: true,
+		firstHour: 0
 	})
 
 });
@@ -96,38 +103,46 @@ function goEvents() {
 }
 
 function addEvent() {
-	
 	recoverEvent();
-	$.ajax({
-		url: 'ajax.php?mode=addEvent',
-		type: 'POST',
-		data: event,
-		dataType: 'JSON',
-		success: function(){
-			result = '<div class="alert alert-dismissible alert-success">';
-			result += '<button type="button" class="close" data-dismiss="alert">&times;</button>';
-            result += '<h4 class="alert-heading">Succes!</h4>';
-          	result += '<p><strong>Event added!</strong></p>';
-        	result += '</div>';
-        	__('_AJAX_ADD_EVENT_').innerHTML = result;
-        	$('#calendar').fullCalendar('refetchEvents');
-        	setTimeout(function(){
-			        $("#deployment").modal('toggle');
-        			 __('_AJAX_ADD_EVENT_').innerHTML = "";
-			  	}, 2000);
-		},
-		error: function () {
-			result = '<div class="alert alert-dismissible alert-danger">';
-			result += '<button type="button" class="close" data-dismiss="alert">&times;</button>';
-            result += '<h4 class="alert-heading">Error!</h4>';
-          	result += '<p><strong>The event couldnt be added!</strong></p>';
-        	result += '</div>';
-        	__('_AJAX_ADD_EVENT_').innerHTML = result;
-        	setTimeout(function(){
-        			 __('_AJAX_ADD_EVENT_').innerHTML = "";
-			  	}, 3000);
-		}
-	});
+	if (event.start != '' && event.end != '' && event.icao != '' && event.airline != '' && event.type_deploy != '' && event.deploy_days != '') {
+		$.ajax({
+			url: 'ajax.php?mode=addEvent',
+			type: 'POST',
+			data: event,
+			dataType: 'JSON',
+			success: function(){
+				result = '<div class="alert alert-dismissible alert-success">';
+				result += '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+	            result += '<h4 class="alert-heading">Succes!</h4>';
+	          	result += '<p><strong>Event added!</strong></p>';
+	        	result += '</div>';
+	        	__('_AJAX_ADD_EVENT_').innerHTML = result;
+	        	$('#calendar').fullCalendar('refetchEvents');
+	        	setTimeout(function(){
+				        $("#deployment").modal('toggle');
+	        			 __('_AJAX_ADD_EVENT_').innerHTML = "";
+				  	}, 2000);
+			},
+			error: function () {
+				result = '<div class="alert alert-dismissible alert-danger">';
+				result += '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+	            result += '<h4 class="alert-heading">Error!</h4>';
+	          	result += '<p><strong>The event couldnt be added!</strong></p>';
+	        	result += '</div>';
+	        	__('_AJAX_ADD_EVENT_').innerHTML = result;
+	        	setTimeout(function(){
+	        			 __('_AJAX_ADD_EVENT_').innerHTML = "";
+				  	}, 3000);
+			}
+		});
+	} else {
+		result = '<div class="alert alert-dismissible alert-danger">';
+      	result += '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+        result += '<h4 class="alert-heading">ERROR!</h4>';
+      	result += '<p><strong>You must fill all the fields to proceed.</strong></p>';
+    	result += '</div>';
+    	__('_AJAX_ADD_EVENT_').innerHTML = result;
+	}
 }
 
 function eraseEvent() {
@@ -166,7 +181,7 @@ function eraseEvent() {
 	});
 }
 
-function updateEvent() {
+function updateEvent(calEvent, modal) {
 	
 	recoverEvent();
 	console.log(event);
@@ -184,7 +199,9 @@ function updateEvent() {
         	__('_AJAX_ADD_EVENT_').innerHTML = result;
         	$('#calendar').fullCalendar('refetchEvents');
         	setTimeout(function(){
-			        $("#deployment").modal('toggle');
+	        			if(modal) {
+				        	$("#deployment").modal('toggle');
+				        }
         			 __('_AJAX_ADD_EVENT_').innerHTML = "";
 			  	}, 2000);
 		},
@@ -202,22 +219,35 @@ function updateEvent() {
 	});
 }
 
-function runScriptEvent(e) {
+// function runScriptEvent(e) {
 	
-	if (e.keyCode == 13) {
-		addEvent();
-	}
-}
+// 	if (e.keyCode == 13) {
+// 		addEvent();
+// 	}
+// }
 
 function recoverEvent() {
 	event = {
 		start : __('start').value,
 		end : __('end').value,
 		icao : __('icao').value,
-		shift_id : __('shift_id').value
+		shift_id : __('shift_id').value,
+		airline : __('airline').value,
+		user_login : __('event_user_login').value,
+		type_deploy : __('type_deploy').value,
+		// train_days: __('train_days').value,
+		deploy_days: __('deploy_days').value
 	};
 }
 
 function cleanEvent() {
+	$('#start').val("");
+	$('#end').val("");
+	$('#icao').val("");
 	$('#shift_id').val("");
+	$('#airline').val("");
+	$('#event_user_login').val("");
+	$('#type_deploy').val("");
+	$('#train_days').val("");
+	$('#deploy_days').val("");
 }

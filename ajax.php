@@ -24,6 +24,18 @@
 			case 'updateEvent' :
 				require('core/bin/ajax/updateEvent.php');
 				break;
+			case 'adminEvents' :
+				require('core/bin/ajax/adminEvents.php');
+				break;
+			case 'valEvent' :
+				require('core/bin/ajax/valEvent.php');
+				break;
+			case 'adminUsers' :
+				require('core/bin/ajax/adminUsers.php');
+				break;
+			case 'valUser' :
+				require('core/bin/ajax/valUser.php');
+				break;
 			default :
 				header('location: index.php');
 				break;
