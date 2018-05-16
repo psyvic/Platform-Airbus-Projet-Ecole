@@ -27,7 +27,11 @@
 
            <div class="form-group">
              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Training or Deployment</label>
-             <input type="text" class="form-control" id="type_deploy" placeholder="">
+             <!-- <input type="text" class="form-control" id="type_deploy" placeholder=""> -->
+             <select id="type_deploy">
+                <option value="Training">Training</option>
+                <option value="Deployment">Deployment</option>
+              </select>
            </div>
 
            <div class="form-group">
@@ -50,13 +54,13 @@
              <input type="text" class="form-control" id="deploy_days" placeholder="">
            </div>
 
-           <div class="form-group">
+           <div class="form-group" style="display: none">
              <label for="usrname"><span class="glyphicon glyphicon-envelope" ></span> SHIFT ID</label>
              <input type="text" class="form-control"  id="shift_id" placeholder="">
            </div>
 
            <div class="form-group">
-             <label for="usrname"><span class="glyphicon glyphicon-user"></span> AQUI PONER LOS DOCUMENTOS</label>
+             <label for="usrname"><span class="glyphicon glyphicon-user"></span> Documents</label>
              <input type="text" class="form-control" id="" placeholder="">
            </div>
 

@@ -99,6 +99,18 @@ if (isset($_SESSION['app_id']) && $_SESSION['active'] == 1) {
                   </div>
               </div>
           </section>';
+} else {
+    echo '<section class="mbr-section mbr-after-navbar" id="content1-10">
+              <div class="mbr-section__container container mbr-section__container--isolated">
+                  <div class="row">
+                      <div class="mbr-article mbr-article--wysiwyg col -sm-8 col-sm-offset-2">
+                      <p>
+                        You need to login to access your calendar.
+                      </p>
+                    </div>
+                  </div>
+              </div>
+          </section>';
 }
 ?>
 

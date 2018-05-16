@@ -10,7 +10,8 @@ if(!empty($_POST['add'])) {
 $db = new Connection();
 
 $login = $db->real_escape_string($_POST['login']);
-$lastName = $db->real_escape_string($_POST['lastName']);
+$lastName = strtoupper($_POST['lastName']);
+$lastName = $db->real_escape_string($lastName);
 $firstName = $db->real_escape_string($_POST['firstName']);
 $jobNumber = $db->real_escape_string($_POST['jobNumber']);
 $site = $db->real_escape_string($_POST['site']);
@@ -51,9 +52,9 @@ if ($db->rows($sql) == 0) {
 	    // echo 'Message has been sent';
 
     	// if Mail sent successfully whe add in the DB
-		$db->query("INSERT INTO users (login, lastName, firstName, jobNumber, pass, keyreg) VALUES ('$login', '$lastName', '$firstName', '$jobNumber', '$pass', '$keyreg');");
+		$db->query("INSERT INTO users (login, lastName, firstName, jobNumber, pass, keyreg, site) VALUES ('$login', '$lastName', '$firstName', '$jobNumber', '$pass', '$keyreg', '$site');");
 		$sql_2 = $db->query("SELECT MAX(id) AS id FROM users;");
-		$_SESSION['app_id'] = $db->browse($sql_2)[0];
+		// $_SESSION['app_id'] = $db->browse($sql_2)[0];
 		$db->free($sql_2);
 		$HTML = 1;
 

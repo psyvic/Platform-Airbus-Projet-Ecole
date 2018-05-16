@@ -5,7 +5,7 @@ $(document).ready(function() {
 		data: 'event',
 		dataType: 'JSON',
 		success: function(data){
-			console.log(data);
+			// console.log(data);
 			var result;
 			for (i = 0; i < data.length; i++) {
 
@@ -28,7 +28,7 @@ $(document).ready(function() {
 		data: 'event',
 		dataType: 'JSON',
 		success: function(data){
-			console.log(data);
+			// console.log(data);
 			var result;
 			for (i = 0; i < data.length; i++) {
 

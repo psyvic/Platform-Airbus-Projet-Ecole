@@ -3,7 +3,7 @@ var event;
 $(document).ready(function() {
 
 	$('#calendar').fullCalendar({
-		events: 'http://localhost:8888/RTP-TWEB/index4.php',
+		events: 'http://localhost:8888/RTP-TWEB/goEvents.php',
 		theme: true,
 		themeSystem: 'bootstrap3',
 		header: {
@@ -74,32 +74,18 @@ $(document).ready(function() {
 });
 
 function goEvents() {
-	connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	connect.responseType = 'json';
-	connect.onreadystatechange = function() {
-		if (connect.readyState == 4 && connect.status == 200) {
-			if (connect.response) {
-				result = '<div class="alert alert-dismissible alert-info">';
-	            result += '<h4 class="alert-heading">Connected!</h4>';
-	          	result += '<p><strong>Events have been charged succesfully!</strong></p>';
-	        	result += '</div>';
-	        	__('_AJAX_CALENDAR_').innerHTML = result;
-	        	return connect.response;
-			} else {
-				__('_AJAX_CALENDAR_').innerHTML = connect.response;
-			}
-		} else if (connect.readyState != 4) {
-			result = '<div class="alert alert-dismissible alert-warning">';
-          	result += '<button type="button" class="close" data-dismiss="alert">&times;</button>';
-            result += '<h4 class="alert-heading">Processing!</h4>';
-          	result += '<p><strong>We are charging the calendar....</strong></p>';
-        	result += '</div>';
-        	__('_AJAX_CALENDAR_').innerHTML = result;
+	$.ajax({
+		url: 'ajax.php?mode=goEvents',
+		type: 'POST',
+		data: 'event',
+		dataType: 'JSON',
+		success: function(events) {
+			return events; 
+		},
+		error: function(){
+			alert('Error loading events in calendar');
 		}
-	}
-	connect.open('GET', 'ajax.php?mode=events', true);
-	connect.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-	connect.send();
+	});
 }
 
 function addEvent() {
